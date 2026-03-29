@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header', { activeNav }) %>
+
+<main class="section">
+  <div class="container">
+    <div class="page-top">
+      <div>
+        <p class="eyebrow">Halaman produk</p>
+        <h1>Koleksi parfum Mawar Parfume</h1>
+        <p class="lead">Cari parfum original Poipet, rekomendasi aroma, dan koleksi signature Mawar Parfume.</p>
+      </div>
+      <form class="search-form" method="get" action="/produk">
+        <input type="search" name="q" placeholder="Cari produk..." value="<%= keyword %>">
+        <button type="submit" class="btn btn-primary">Cari</button>
+      </form>
+    </div>
+
+    <div class="card-grid">
+      <% products.forEach(function(product){ %>
+        <article class="product-card">
+          <a href="/produk/<%= product.slug %>">
+            <img src="<%= product.image %>" alt="<%= product.alt %>" loading="lazy">
+          </a>
+          <div class="product-card-body">
+            <p class="product-category"><%= product.category %></p>
+            <h2><a href="/produk/<%= product.slug %>"><%= product.name %></a></h2>
+            <p><%= product.shortDescription %></p>
+            <div class="product-meta">
+              <strong>Rp <%= Number(product.price).toLocaleString('id-ID') %></strong>
+              <a class="text-link" href="/produk/<%= product.slug %>">Lihat detail</a>
+            </div>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/scripts') %>

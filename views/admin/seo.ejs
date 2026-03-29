@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin SEO | Mawar Parfume</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="page-admin">
+  <main class="admin-shell">
+    <%- include('partials/header', { current }) %>
+    <section class="admin-panel">
+      <h1>SEO Settings</h1>
+      <form class="admin-form-grid" method="post" action="/admin/seo">
+        <input name="siteName" value="<%= settings.siteName %>" placeholder="Site name">
+        <input name="siteTitle" value="<%= settings.siteTitle %>" placeholder="Site title">
+        <input name="siteDescription" value="<%= settings.siteDescription %>" placeholder="Site description">
+        <input name="businessName" value="<%= settings.businessName %>" placeholder="Business name">
+        <input name="businessType" value="<%= settings.businessType %>" placeholder="Business type">
+        <input name="areaServed" value="<%= settings.areaServed %>" placeholder="Area served">
+        <input name="address" value="<%= settings.address %>" placeholder="Address">
+        <input name="phone" value="<%= settings.phone %>" placeholder="Phone">
+        <input name="email" value="<%= settings.email %>" placeholder="Email">
+        <input name="whatsappLink" value="<%= settings.whatsappLink %>" placeholder="WhatsApp link">
+        <input name="instagram" value="<%= settings.instagram %>" placeholder="Instagram">
+        <input name="facebook" value="<%= settings.facebook %>" placeholder="Facebook">
+        <input name="tiktok" value="<%= settings.tiktok %>" placeholder="TikTok">
+        <input name="defaultMetaTitle" value="<%= settings.defaultMetaTitle %>" placeholder="Default meta title">
+        <input name="defaultMetaDescription" value="<%= settings.defaultMetaDescription %>" placeholder="Default meta description">
+        <input name="homeMetaTitle" value="<%= settings.homeMetaTitle %>" placeholder="Home meta title">
+        <input name="homeMetaDescription" value="<%= settings.homeMetaDescription %>" placeholder="Home meta description">
+        <input name="aboutMetaTitle" value="<%= settings.aboutMetaTitle %>" placeholder="About meta title">
+        <input name="aboutMetaDescription" value="<%= settings.aboutMetaDescription %>" placeholder="About meta description">
+        <input name="contactMetaTitle" value="<%= settings.contactMetaTitle %>" placeholder="Contact meta title">
+        <input name="contactMetaDescription" value="<%= settings.contactMetaDescription %>" placeholder="Contact meta description">
+        <button class="btn btn-primary" type="submit">Simpan SEO Settings</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

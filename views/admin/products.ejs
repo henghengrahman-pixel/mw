@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Produk | Mawar Parfume</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="page-admin">
+  <main class="admin-shell">
+    <%- include('partials/header', { current }) %>
+
+    <section class="admin-panel">
+      <h1>Tambah Produk</h1>
+      <form class="admin-form-grid" method="post" action="/admin/produk">
+        <input name="name" placeholder="Nama produk" required>
+        <input name="price" type="number" placeholder="Harga" required>
+        <input name="category" placeholder="Category: women / men / unisex">
+        <input name="volume" placeholder="Volume">
+        <input name="image" placeholder="URL / path gambar">
+        <input name="alt" placeholder="Alt text gambar">
+        <input name="shortDescription" placeholder="Deskripsi singkat">
+        <input name="metaTitle" placeholder="Meta title">
+        <input name="metaDescription" placeholder="Meta description">
+        <input name="topNotes" placeholder="Top notes">
+        <input name="middleNotes" placeholder="Middle notes">
+        <input name="baseNotes" placeholder="Base notes">
+        <input name="keywords" placeholder="Keyword, pisahkan dengan koma">
+        <label class="inline-check"><input type="checkbox" name="inStock" value="true" checked> In stock</label>
+        <label class="inline-check"><input type="checkbox" name="featured" value="true"> Featured</label>
+        <textarea name="description" placeholder="Deskripsi lengkap"></textarea>
+        <button class="btn btn-primary" type="submit">Simpan Produk</button>
+      </form>
+    </section>
+
+    <section class="admin-panel">
+      <h2>Daftar Produk</h2>
+      <div class="admin-list">
+        <% products.forEach(function(product){ %>
+          <details class="admin-item">
+            <summary><strong><%= product.name %></strong> — Rp <%= Number(product.price).toLocaleString('id-ID') %></summary>
+            <form class="admin-form-grid" method="post" action="/admin/produk/<%= product.id %>/update">
+              <input name="name" value="<%= product.name %>" required>
+              <input name="slug" value="<%= product.slug %>">
+              <input name="price" type="number" value="<%= product.price %>" required>
+              <input name="category" value="<%= product.category %>">
+              <input name="volume" value="<%= product.volume %>">
+              <input name="image" value="<%= product.image %>">
+              <input name="alt" value="<%= product.alt %>">
+              <input name="shortDescription" value="<%= product.shortDescription %>">
+              <input name="metaTitle" value="<%= product.metaTitle %>">
+              <input name="metaDescription" value="<%= product.metaDescription %>">
+              <input name="topNotes" value="<%= product.topNotes %>">
+              <input name="middleNotes" value="<%= product.middleNotes %>">
+              <input name="baseNotes" value="<%= product.baseNotes %>">
+              <input name="keywords" value="<%= (product.keywords || []).join(', ') %>">
+              <label class="inline-check"><input type="checkbox" name="inStock" value="true" <%= product.inStock ? 'checked' : '' %>> In stock</label>
+              <label class="inline-check"><input type="checkbox" name="featured" value="true" <%= product.featured ? 'checked' : '' %>> Featured</label>
+              <textarea name="description"><%= product.description %></textarea>
+              <div class="admin-actions">
+                <button class="btn btn-primary" type="submit">Update</button>
+              </div>
+            </form>
+            <form method="post" action="/admin/produk/<%= product.id %>/delete" onsubmit="return confirm('Hapus produk ini?')">
+              <button class="btn btn-danger" type="submit">Hapus</button>
+            </form>
+          </details>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

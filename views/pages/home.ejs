@@ -1,0 +1,87 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header', { activeNav }) %>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Mawar Parfum • parfum poipet • mawar parfume poipet</p>
+        <h1>Mawar Parfume untuk pencinta parfum premium di Poipet.</h1>
+        <p class="lead">Kami mempertahankan nuansa elegan dari brand Mawar Parfume, lalu merapikannya menjadi website yang lebih cepat, kuat untuk SEO, dan lebih mudah dikelola.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/produk">Lihat Produk</a>
+          <a class="btn btn-secondary" href="/artikel">Baca Artikel</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="/assets/og-cover.jpg" alt="Banner Mawar Parfume dengan nuansa premium" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-head">
+      <div>
+        <p class="eyebrow">Produk unggulan</p>
+        <h2>Rekomendasi parfum Mawar Parfume</h2>
+      </div>
+      <a class="text-link" href="/produk">Lihat semua produk</a>
+    </div>
+    <div class="container card-grid">
+      <% products.forEach(function(product){ %>
+        <article class="product-card">
+          <a href="/produk/<%= product.slug %>">
+            <img src="<%= product.image %>" alt="<%= product.alt %>" loading="lazy">
+          </a>
+          <div class="product-card-body">
+            <p class="product-category"><%= product.category %></p>
+            <h3><a href="/produk/<%= product.slug %>"><%= product.name %></a></h3>
+            <p><%= product.shortDescription %></p>
+            <div class="product-meta">
+              <strong>Rp <%= Number(product.price).toLocaleString('id-ID') %></strong>
+              <a class="text-link" href="/produk/<%= product.slug %>">Detail</a>
+            </div>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container info-grid">
+      <article class="info-card">
+        <h2>Kenapa struktur baru ini penting?</h2>
+        <p>Semua halaman sekarang dipisah rapi, pakai partial EJS, metadata reusable, dan route yang clean. Ini memudahkan pengelolaan produk, artikel, serta SEO settings dari admin panel.</p>
+      </article>
+      <article class="info-card">
+        <h2>Target SEO utama</h2>
+        <p>Keyword utama Anda tetap dijaga: <strong>Mawar Parfum</strong>, <strong>parfum poipet</strong>, dan <strong>mawar parfume poipet</strong>. Meta title, canonical, schema, sitemap, dan internal linking sudah disiapkan dari awal.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-head">
+      <div>
+        <p class="eyebrow">Artikel</p>
+        <h2>Konten untuk bantu indexing dan trust</h2>
+      </div>
+      <a class="text-link" href="/artikel">Semua artikel</a>
+    </div>
+    <div class="container article-grid">
+      <% articles.forEach(function(article){ %>
+        <article class="article-card">
+          <img src="<%= article.coverImage %>" alt="<%= article.coverAlt %>" loading="lazy">
+          <div class="article-card-body">
+            <h3><a href="/artikel/<%= article.slug %>"><%= article.title %></a></h3>
+            <p><%= article.excerpt %></p>
+            <a class="text-link" href="/artikel/<%= article.slug %>">Baca artikel</a>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/scripts') %>

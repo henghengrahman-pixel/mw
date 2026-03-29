@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= meta.title %></title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="page-admin-login">
+  <main class="admin-login-wrap">
+    <form class="admin-login-card" method="post" action="/admin/login">
+      <p class="eyebrow">Admin panel</p>
+      <h1>Login Admin Mawar Parfume</h1>
+      <% if (error) { %><p class="form-error"><%= error %></p><% } %>
+      <label>Admin ID
+        <input type="text" name="id" required>
+      </label>
+      <label>Password
+        <input type="password" name="password" required>
+      </label>
+      <button type="submit" class="btn btn-primary">Masuk</button>
+      <a href="/" class="text-link">Kembali ke website</a>
+    </form>
+  </main>
+</body>
+</html>

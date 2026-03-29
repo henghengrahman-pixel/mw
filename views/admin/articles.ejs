@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Artikel | Mawar Parfume</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="page-admin">
+  <main class="admin-shell">
+    <%- include('partials/header', { current }) %>
+
+    <section class="admin-panel">
+      <h1>Tambah Artikel</h1>
+      <form class="admin-form-grid" method="post" action="/admin/artikel">
+        <input name="title" placeholder="Judul artikel" required>
+        <input name="coverImage" placeholder="URL / path cover image">
+        <input name="coverAlt" placeholder="Alt text cover">
+        <input name="excerpt" placeholder="Excerpt" required>
+        <input name="metaTitle" placeholder="Meta title">
+        <input name="metaDescription" placeholder="Meta description">
+        <input name="keywords" placeholder="Keyword, pisahkan dengan koma">
+        <textarea name="content" placeholder="Isi artikel HTML sederhana" required></textarea>
+        <button class="btn btn-primary" type="submit">Simpan Artikel</button>
+      </form>
+    </section>
+
+    <section class="admin-panel">
+      <h2>Daftar Artikel</h2>
+      <div class="admin-list">
+        <% articles.forEach(function(article){ %>
+          <details class="admin-item">
+            <summary><strong><%= article.title %></strong></summary>
+            <form class="admin-form-grid" method="post" action="/admin/artikel/<%= article.id %>/update">
+              <input name="title" value="<%= article.title %>" required>
+              <input name="slug" value="<%= article.slug %>">
+              <input name="coverImage" value="<%= article.coverImage %>">
+              <input name="coverAlt" value="<%= article.coverAlt %>">
+              <input name="excerpt" value="<%= article.excerpt %>" required>
+              <input name="metaTitle" value="<%= article.metaTitle %>">
+              <input name="metaDescription" value="<%= article.metaDescription %>">
+              <input name="keywords" value="<%= (article.keywords || []).join(', ') %>">
+              <textarea name="content"><%= article.content %></textarea>
+              <div class="admin-actions">
+                <button class="btn btn-primary" type="submit">Update</button>
+              </div>
+            </form>
+            <form method="post" action="/admin/artikel/<%= article.id %>/delete" onsubmit="return confirm('Hapus artikel ini?')">
+              <button class="btn btn-danger" type="submit">Hapus</button>
+            </form>
+          </details>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

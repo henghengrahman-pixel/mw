@@ -1,0 +1,25 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header', { activeNav }) %>
+
+<main class="section">
+  <div class="container contact-grid">
+    <article class="contact-card">
+      <p class="eyebrow">Kontak</p>
+      <h1>Hubungi Mawar Parfume</h1>
+      <p class="lead">Untuk pemesanan, pertanyaan produk, atau kerja sama, gunakan kontak bisnis yang ada di bawah.</p>
+      <ul class="contact-list">
+        <li><strong>Telepon:</strong> <%= settings.phone %></li>
+        <li><strong>Email:</strong> <%= settings.email %></li>
+        <li><strong>Alamat:</strong> <%= settings.address %></li>
+        <li><strong>WhatsApp:</strong> <a href="<%= settings.whatsappLink %>"><%= settings.whatsappLink %></a></li>
+      </ul>
+    </article>
+    <article class="contact-card">
+      <h2>Catatan data yang masih perlu Anda lengkapi</h2>
+      <p>Agar local SEO makin kuat, isi alamat bisnis yang lebih spesifik, nomor WhatsApp final, jam operasional, profil sosial media, dan deskripsi brand final.</p>
+    </article>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/scripts') %>
