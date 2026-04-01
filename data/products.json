@@ -1,0 +1,24 @@
+[
+  {
+    "id": "demo-rose-oud",
+    "slug": "rose-oud",
+    "name": "ROSE OUD",
+    "price": "150000",
+    "desc": "Spicy \u2022 Warm \u2022 Luxury",
+    "image": "/images/product-placeholder.png",
+    "badge": "BESTSELLER",
+    "category": "UNISEX",
+    "soldOut": false,
+    "active": true,
+    "topSeller": true,
+    "topNotes": "Rose, saffron",
+    "midNotes": "Oud, patchouli",
+    "baseNotes": "Amber, musk",
+    "aroma": "Warm spicy",
+    "alt": "Rose Oud Mawar Parfum Poipet",
+    "metaTitle": "ROSE OUD | Mawar Parfum Poipet",
+    "metaDescription": "ROSE OUD dari Mawar Parfum Poipet. Parfum original dengan aroma spicy, warm, dan luxury.",
+    "createdAt": "2026-04-02T00:00:00.000Z",
+    "updatedAt": "2026-04-02T00:00:00.000Z"
+  }
+]

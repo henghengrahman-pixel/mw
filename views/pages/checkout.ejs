@@ -1,0 +1,62 @@
+<section class="section">
+  <div class="container narrow">
+    <h1>Checkout Mawar Parfum</h1>
+    <p class="lead">Form ini mempertahankan alur order lama: customer isi data, upload bukti transfer, lalu order dikirim ke Telegram admin.</p>
+
+    <form id="checkoutForm" class="checkout-form">
+      <div class="form-grid">
+        <div>
+          <label>Nama</label>
+          <input type="text" name="name" required />
+        </div>
+        <div>
+          <label>WhatsApp</label>
+          <input type="text" name="phone" />
+        </div>
+        <div>
+          <label>Telegram</label>
+          <input type="text" name="telegram" />
+        </div>
+        <div>
+          <label>Lokasi</label>
+          <input type="text" name="location" required />
+        </div>
+      </div>
+
+      <label>Detail alamat</label>
+      <textarea name="detail" rows="4"></textarea>
+
+      <div class="form-grid">
+        <div>
+          <label>Nama parfum</label>
+          <input type="text" name="productName" required />
+        </div>
+        <div>
+          <label>Harga</label>
+          <input type="number" name="price" required />
+        </div>
+        <div>
+          <label>Qty</label>
+          <input type="number" name="qty" value="1" min="1" required />
+        </div>
+        <div>
+          <label>Metode pembayaran</label>
+          <select name="paymentMethod">
+            <option value="TRANSFER">TRANSFER</option>
+            <option value="CASH">CASH</option>
+            <option value="COD">COD</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Bukti transfer (opsional kecuali TRANSFER)</label>
+      <input type="file" name="proof" accept="image/*" />
+
+      <label>Catatan</label>
+      <textarea name="notes" rows="4"></textarea>
+
+      <button type="submit" class="btn">Kirim Pesanan</button>
+      <p id="checkoutResult" class="result-text"></p>
+    </form>
+  </div>
+</section>

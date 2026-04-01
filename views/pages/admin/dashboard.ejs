@@ -1,0 +1,95 @@
+<section class="section">
+  <div class="container">
+    <div class="dashboard-head">
+      <div>
+        <h1>Dashboard Admin</h1>
+        <p>Kelola produk, order, dan status stok.</p>
+      </div>
+      <button id="logoutBtn" class="btn btn-outline">Logout</button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><strong><%= stats.totalProducts %></strong><span>Total produk</span></div>
+      <div class="stat-card"><strong><%= stats.activeProducts %></strong><span>Produk aktif</span></div>
+      <div class="stat-card"><strong><%= stats.soldOutProducts %></strong><span>Sold out</span></div>
+      <div class="stat-card"><strong><%= stats.totalOrders %></strong><span>Total order</span></div>
+    </div>
+
+    <div class="dashboard-grid">
+      <section class="panel">
+        <h2>Tambah Produk</h2>
+        <form id="productForm" class="checkout-form compact-form">
+          <input type="text" name="name" placeholder="Nama parfum" required />
+          <input type="number" name="price" placeholder="Harga" required />
+          <input type="text" name="image" placeholder="URL gambar" />
+          <input type="text" name="badge" placeholder="Badge" />
+          <select name="category">
+            <option value="MEN">MEN</option>
+            <option value="WOMEN">WOMEN</option>
+            <option value="UNISEX">UNISEX</option>
+            <option value="MIX">MIX</option>
+          </select>
+          <textarea name="desc" rows="4" placeholder="Deskripsi"></textarea>
+          <label><input type="checkbox" name="topSeller" /> Top seller</label>
+          <label><input type="checkbox" name="soldOut" /> Sold out</label>
+          <button type="submit" class="btn">Simpan Produk</button>
+          <p id="productFormResult" class="result-text"></p>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Daftar Produk</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Kategori</th>
+                <th>Harga</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% products.forEach(function(product) { %>
+                <tr>
+                  <td><%= product.name %></td>
+                  <td><%= product.category %></td>
+                  <td>Rp <%= Number(product.price).toLocaleString('id-ID') %></td>
+                  <td><%= product.soldOut ? 'Sold Out' : 'Ready' %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel">
+      <h2>Order Terbaru</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Kode</th>
+              <th>Nama</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Tanggal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% orders.forEach(function(order) { %>
+              <tr>
+                <td><%= order.orderCode %></td>
+                <td><%= order.customer?.name %></td>
+                <td>Rp <%= Number(order.totals?.grandTotal || 0).toLocaleString('id-ID') %></td>
+                <td><%= order.status %></td>
+                <td><%= new Date(order.createdAt).toLocaleString('id-ID') %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</section>

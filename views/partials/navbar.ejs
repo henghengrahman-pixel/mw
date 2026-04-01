@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="/" class="brand">Mawar Parfum</a>
+    <nav class="nav">
+      <a href="/" class="nav-link <%= currentPath === '/' ? 'is-active' : '' %>">Home</a>
+      <a href="/products" class="nav-link <%= currentPath.startsWith('/product') || currentPath.startsWith('/products') ? 'is-active' : '' %>">Produk</a>
+      <a href="/checkout" class="nav-link <%= currentPath === '/checkout' ? 'is-active' : '' %>">Checkout</a>
+      <a href="/admin/login" class="nav-link">Admin</a>
+    </nav>
+  </div>
+</header>
