@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mawar Parfum — Admin</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="admin">
+  <div class="container">
+    <div class="glass">
+
+      <!-- TOP BAR -->
+      <div class="topbarA">
+        <div class="brandA">ADMIN MAWAR PARFUM </div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <span class="pillA" id="statusPill">Checking session…</span>
+          <a class="btnA ghost" href="/" style="padding:10px 12px;">Kembali ke Web</a>
+          <button class="btnA ghost" id="logoutBtn" style="padding:10px 12px; display:none;">Logout</button>
+        </div>
+      </div>
+      <div class="hrA"></div>
+
+      <!-- LOGIN VIEW -->
+      <div id="loginView" style="padding:18px;">
+        <div class="gridA two">
+          <div class="cardA">
+            <h1 class="h1A" style="margin:0;font-size:28px;letter-spacing:.06em;">Welcome back, Admin.</h1>
+            <div class="subA" style="color:rgba(255,255,255,.65);margin-top:8px;line-height:1.6;">
+              Silahkan untuk Login Owner Mawar jaya Group .
+            </div>
+
+            <div class="hrA"></div>
+
+            <div class="subA" style="color:rgba(255,255,255,.65);line-height:1.6;">
+              VISI MAWAR PARFUME:
+              <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;">
+                <span class="pillA">Elegan </span>
+                <span class="pillA">Profesional</span>
+                <span class="pillA">Growth</span>
+                <span class="pillA">Ekspansi</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cardA">
+            <h2 style="margin:0 0 6px;">Admin Login</h2>
+            <div class="subA" style="color:rgba(255,255,255,.65);">Masukkan ID & password admin.</div>
+
+            <form id="loginForm" style="margin-top:12px;">
+              <label class="A">Admin ID</label>
+              <input class="A" name="id" placeholder="contoh: admin" required />
+
+              <label class="A">Password</label>
+              <input class="A" name="password" type="password" placeholder="••••••••" required />
+
+              <div class="actionsA" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+                <button class="btnA primary" type="submit">LOGIN</button>
+              </div>
+
+              <small class="subA" id="loginMsg" style="display:block;margin-top:10px;color:rgba(255,255,255,.65);"></small>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL VIEW -->
+      <div id="panelView" style="display:none; padding:18px;">
+        <div class="gridA two">
+
+          <!-- FORM -->
+          <div class="cardA">
+            <h2 style="margin:0;">Kelola Produk</h2>
+            <div class="subA" style="color:rgba(255,255,255,.65);margin-top:6px;">
+              Admin menentukan: nama, harga, kategori, badge, foto, dan SOLD OUT.
+            </div>
+            <div class="hrA"></div>
+
+            <form id="productForm">
+              <input type="hidden" id="id" />
+
+              <label class="A">Nama Parfum</label>
+              <input class="A" id="name" placeholder="contoh: Rose Oud" required />
+
+              <div class="rowA" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div>
+                  <label class="A">Harga (angka)</label>
+                  <input class="A" id="price" inputmode="numeric" placeholder="150000" required />
+                </div>
+                <div>
+                  <label class="A">Kategori</label>
+                  <select class="A" id="category">
+                    <option value="WOMEN">WOMEN</option>
+                    <option value="MEN">MEN</option>
+                    <option value="UNISEX">UNISEX</option>
+                    <!-- ✅ NEW: PARFUME MIX -->
+                    <option value="MIX">PARFUME MIX</option>
+                  </select>
+                </div>
+              </div>
+
+              <label class="A">Deskripsi Singkat</label>
+              <textarea class="A" id="desc" placeholder="Floral • clean • elegant"></textarea>
+
+              <label class="A">Foto (URL)</label>
+              <input class="A" id="image" placeholder="https://..." />
+
+              <div class="rowA" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div>
+                  <label class="A">Badge</label>
+                  <select class="A" id="badge">
+                    <option value="">(Tidak ada)</option>
+                    <option value="BESTSELLER">BESTSELLER</option>
+                    <option value="REFILLABLE">REFILLABLE</option>
+                    <option value="BESTSELLER,REFILLABLE">BESTSELLER + REFILLABLE</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="A">Status Stok</label>
+                  <select class="A" id="soldOut">
+                    <option value="false">READY (Ada stok)</option>
+                    <option value="true">SOLD OUT (Habis)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="rowA" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div>
+                  <label class="A">Aktif tampil di web?</label>
+                  <select class="A" id="active">
+                    <option value="true">YA</option>
+                    <option value="false">TIDAK</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="A">Top Seller?</label>
+                  <select class="A" id="topSeller">
+                    <option value="false">TIDAK</option>
+                    <option value="true">YA</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="actionsA" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+                <button class="btnA primary" type="submit" id="saveBtn">SIMPAN</button>
+                <button class="btnA ghost" type="button" id="resetBtn">RESET</button>
+              </div>
+
+              <small class="subA" style="display:block;margin-top:10px;color:rgba(255,255,255,.65);">
+                Jika SOLD OUT, badge “SOLD OUT” tampil di web & tombol checkout otomatis nonaktif.
+              </small>
+            </form>
+          </div>
+
+          <!-- LIST -->
+          <div class="cardA">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+              <div>
+                <h2 style="margin:0;">Daftar Produk</h2>
+                <div class="subA" style="color:rgba(255,255,255,.65);margin-top:6px;">
+                  Klik Edit untuk ubah harga/nama/badge/SOLD OUT.
+                </div>
+              </div>
+              <span class="pillA" id="countPill">0 Products</span>
+            </div>
+
+            <div class="hrA"></div>
+
+            <table class="tableA" style="width:100%;border-collapse:separate;border-spacing:0 10px;">
+              <thead>
+                <tr>
+                  <th>Foto</th>
+                  <th>Nama</th>
+                  <th>Harga</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+
+            <small class="subA" style="color:rgba(255,255,255,.65);">
+              Catatan: data masih memory (restart server reset). Bisa upgrade PostgreSQL kalau mau.
+            </small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="toastA" id="toast"></div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const loginView = $("loginView");
+    const panelView = $("panelView");
+    const statusPill = $("statusPill");
+    const logoutBtn = $("logoutBtn");
+    const toast = $("toast");
+
+    const tbody = $("tbody");
+    const countPill = $("countPill");
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.style.display = "block";
+      setTimeout(()=> toast.style.display="none", 1800);
+    }
+
+    function rupiah(n){
+      const num = Number(n||0);
+      return "Rp " + num.toLocaleString("id-ID");
+    }
+
+    async function req(path, options={}){
+      const res = await fetch(path, {
+        headers:{ "Content-Type":"application/json" },
+        credentials:"same-origin",
+        ...options
+      });
+      const ct = res.headers.get("content-type") || "";
+      const data = ct.includes("application/json") ? await res.json() : await res.text();
+      if(!res.ok) throw new Error(typeof data==="string" ? data : (data.message || "Error"));
+      return data;
+    }
+
+    async function checkSession(){
+      try{
+        const me = await req("/api/admin/me");
+        statusPill.textContent = "Logged in: " + me.id;
+        loginView.style.display = "none";
+        panelView.style.display = "block";
+        logoutBtn.style.display = "inline-block";
+        await load();
+      }catch{
+        statusPill.textContent = "Not logged in";
+        loginView.style.display = "block";
+        panelView.style.display = "none";
+        logoutBtn.style.display = "none";
+      }
+    }
+
+    $("loginForm").addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const body = JSON.stringify(Object.fromEntries(fd.entries()));
+      $("loginMsg").textContent = "Login...";
+      try{
+        await req("/admin/login", { method:"POST", body });
+        $("loginMsg").textContent = "";
+        showToast("Login berhasil");
+        await checkSession();
+      }catch(err){
+        $("loginMsg").textContent = "❌ " + err.message;
+      }
+    });
+
+    logoutBtn.addEventListener("click", async ()=>{
+      await req("/logout", { method:"POST" });
+      showToast("Logout");
+      await checkSession();
+    });
+
+    function resetForm(){
+      $("id").value = "";
+      $("name").value = "";
+      $("price").value = "";
+      $("desc").value = "";
+      $("image").value = "";
+      $("badge").value = "";
+      $("category").value = "WOMEN";
+      $("soldOut").value = "false";
+      $("active").value = "true";
+      $("topSeller").value = "false";
+      $("saveBtn").textContent = "SIMPAN";
+    }
+    $("resetBtn").addEventListener("click", resetForm);
+
+    function statusPills(p){
+      const pills = [];
+      pills.push(p.soldOut ? '<span class="badgeA">SOLD OUT</span>' : '<span class="badgeA gold">READY</span>');
+      if(p.badge){
+        String(p.badge).split(",").map(s=>s.trim()).filter(Boolean)
+          .forEach(b => pills.push('<span class="badgeA '+(b==="BESTSELLER"?"gold":"")+'">'+b+'</span>'));
+      }
+      return pills.join(" ");
+    }
+
+    function escAttr(s){
+      return String(s||"")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function rowHTML(p){
+      const img = p.image || "https://via.placeholder.com/100x100.png?text=MP";
+      return `
+        <tr class="trA">
+          <td><img class="thumbA" src="${escAttr(img)}" style="width:42px;height:42px;border-radius:12px;object-fit:cover;" /></td>
+          <td>
+            <div style="font-weight:900;letter-spacing:.04em;">${escAttr(p.name)}</div>
+            <small style="color:rgba(255,255,255,.65)">${escAttr((p.category||"").toUpperCase())} • ${p.active ? "ACTIVE" : "OFF"} • ${p.topSeller ? "TOP" : ""}</small>
+          </td>
+          <td style="font-weight:900;">${rupiah(p.price)}</td>
+          <td>${statusPills(p)}</td>
+          <td>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btnA ghost" type="button" data-edit="${escAttr(p.id)}">Edit</button>
+              <button class="btnA danger" type="button" data-del="${escAttr(p.id)}">Hapus</button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }
+
+    let CACHE = [];
+
+    async function load(){
+      const list = await req("/api/admin/products");
+      CACHE = Array.isArray(list) ? list : [];
+      countPill.textContent = CACHE.length + " Products";
+      tbody.innerHTML = CACHE.map(rowHTML).join("");
+
+      tbody.querySelectorAll("[data-edit]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const id = btn.getAttribute("data-edit");
+          const p = CACHE.find(x=>x.id===id);
+          if(p) editProduct(p);
+        });
+      });
+      tbody.querySelectorAll("[data-del]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const id = btn.getAttribute("data-del");
+          deleteProduct(id);
+        });
+      });
+    }
+
+    function editProduct(p){
+      $("id").value = p.id || "";
+      $("name").value = p.name || "";
+      $("price").value = p.price || "";
+      $("desc").value = p.desc || "";
+      $("image").value = p.image || "";
+      $("badge").value = p.badge || "";
+      $("category").value = p.category || "WOMEN";
+      $("soldOut").value = String(!!p.soldOut);
+      $("active").value = String(!!p.active);
+      $("topSeller").value = String(!!p.topSeller);
+      $("saveBtn").textContent = "UPDATE";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    async function deleteProduct(id){
+      if(!confirm("Hapus produk ini?")) return;
+      await req("/api/admin/products/" + id, { method:"DELETE" });
+      showToast("Produk dihapus");
+      await load();
+      resetForm();
+    }
+
+    $("productForm").addEventListener("submit", async (e)=>{
+      e.preventDefault();
+
+      const payload = {
+        name: $("name").value.trim(),
+        price: String($("price").value).trim(),
+        desc: $("desc").value.trim(),
+        image: $("image").value.trim(),
+        badge: $("badge").value,
+        category: $("category").value,
+        soldOut: $("soldOut").value === "true",
+        active: $("active").value === "true",
+        topSeller: $("topSeller").value === "true"
+      };
+
+      const id = $("id").value.trim();
+      if(id){
+        await req("/api/admin/products/" + id, { method:"PUT", body: JSON.stringify(payload) });
+        showToast("Produk diupdate");
+      }else{
+        await req("/api/admin/products", { method:"POST", body: JSON.stringify(payload) });
+        showToast("Produk ditambah");
+      }
+
+      await load();
+      resetForm();
+    });
+
+    checkSession();
+  </script>
+  
+</body>
+</html>

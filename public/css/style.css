@@ -1,0 +1,1078 @@
+:root{
+  /* ===== CUSTOMER ===== */
+  --bg:#ffffff;
+  --text:#111;
+  --muted:#666;
+  --line:#e9e9e9;
+  --shadow:0 14px 40px rgba(0,0,0,.08);
+  --max:1200px;
+  --brand:#7a2946;
+  --gold:#e7c06b;
+
+  /* sticky offset (tinggi top-strip) */
+  --strip-offset:46px;
+
+  /* ===== LUX UPGRADE ===== */
+  --lux-line:rgba(11,11,15,.10);
+  --lux-muted:rgba(11,11,15,.62);
+  --lux-shadow:0 18px 60px rgba(0,0,0,.10);
+  --lux-shadow2:0 10px 26px rgba(0,0,0,.10);
+  --lux-radius:18px;
+  --lux-radius2:22px;
+
+  /* ===== ADMIN ===== */
+  --admin-bg:#0b0b0f;
+  --admin-card:rgba(255,255,255,.08);
+  --admin-card2:rgba(255,255,255,.06);
+  --admin-line:rgba(255,255,255,.14);
+  --admin-text:#f6f6f6;
+  --admin-muted:rgba(255,255,255,.65);
+  --admin-shadow:0 18px 60px rgba(0,0,0,.55);
+  --radius:18px;
+
+  /* =====================================================
+     🎊 IMLEK 2026 (Tahun Kuda) — Theme Tokens
+     ===================================================== */
+  --cny-red:#8f1020;
+  --cny-red2:#c2142a;
+  --cny-ink:#0b0b0f;
+  --cny-gold:#e7c06b;
+  --cny-gold2:#ffdd8a;
+  --cny-line:rgba(231,192,107,.22);
+  --cny-glow:0 18px 60px rgba(0,0,0,.22);
+}
+
+*{box-sizing:border-box}
+a{text-decoration:none;color:inherit}
+mark{background:rgba(231,192,107,.35);color:inherit;padding:0 .18em;border-radius:6px}
+
+/* =====================================================
+   ✅ GLOBAL ANTI ZOOM CONSISTENT
+   ===================================================== */
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body.site{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  color:var(--text);
+  background:var(--bg);
+  text-rendering:optimizeLegibility;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+input,textarea,select,button{font-size:16px}
+a,button,.btn,.iconbtn,.cartlink,.checkout-link,.cart-close,.thumb,.size,.pill{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+html,body.site{
+  overscroll-behavior:none;
+  -webkit-overflow-scrolling:touch;
+}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+.line{border-top:1px solid var(--line)}
+.muted{color:var(--muted)}
+
+/* =====================================================
+   🎊 IMLEK 2026 BACKDROP (global)
+   - aman: cuma nambah nuansa (tetap rapi & readable)
+   ===================================================== */
+body.site{
+  background:
+    radial-gradient(1200px 700px at 20% -10%, rgba(255,221,138,.12), transparent 60%),
+    radial-gradient(900px 600px at 90% 10%, rgba(231,192,107,.10), transparent 55%),
+    radial-gradient(900px 700px at 10% 110%, rgba(194,20,42,.12), transparent 60%),
+    linear-gradient(180deg, #0b0b0f 0%, #0c0b10 60%, #0b0b0f 100%);
+  color:#f6f6f6;
+}
+.line{border-top:1px solid rgba(255,255,255,.08)}
+.muted{color:rgba(255,255,255,.68)}
+mark{background:rgba(255,221,138,.26)}
+
+/* =====================================================
+   TOP STRIP (IMLEK + LUX)
+   ===================================================== */
+.top-strip{
+  position:sticky;
+  top:0;
+  z-index:1002;
+  border-bottom:1px solid var(--cny-line);
+  background:linear-gradient(180deg, rgba(143,16,32,.96), rgba(93,10,20,.96));
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  color:#ffe9bf;
+  font-size:11px;
+  letter-spacing:.08em;
+  box-shadow:0 10px 26px rgba(0,0,0,.20);
+}
+.top-strip .strip-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:10px 0;
+  flex-wrap:nowrap;
+  min-height:46px;
+}
+.strip-left{
+  font-weight:900;
+  text-transform:uppercase;
+  white-space:nowrap;
+  color:#ffe9bf;
+}
+.strip-right{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  white-space:nowrap;
+  font-weight:800;
+}
+.strip-right b{font-weight:900;color:#fff4d6}
+.strip-right .dot{opacity:.55}
+.strip-right .mwgtxt{color:var(--cny-gold2);text-shadow:0 1px 0 rgba(0,0,0,.35)}
+
+.strip-right .cartlink{
+  cursor:pointer;
+  font-weight:900;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,221,138,.22);
+  background:linear-gradient(180deg, rgba(255,221,138,.12), rgba(0,0,0,.08));
+}
+.strip-right .cartlink:hover{filter:brightness(1.05)}
+.strip-right .cartlink:focus{
+  outline:3px solid rgba(255,221,138,.45);
+  outline-offset:2px;
+  border-radius:999px;
+}
+
+/* ✅ Checkout ada icon 🛒 + mewah */
+.checkout-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,221,138,.42);
+  background:linear-gradient(180deg, rgba(255,221,138,.22), rgba(231,192,107,.10));
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  line-height:1;
+  color:#1b1208;
+  box-shadow:0 10px 18px rgba(0,0,0,.18);
+}
+.checkout-link:hover{filter:saturate(1.05) brightness(1.02)}
+.checkout-link .cicon{font-size:16px;line-height:1;transform:translateY(1px)}
+.checkout-link .ctext{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+/* =====================================================
+   HEADER (STICKY DI BAWAH TOP STRIP) + IMLEK GLASS
+   ===================================================== */
+.header{
+  position:sticky;
+  top:var(--strip-offset);
+  z-index:1001;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(900px 360px at 50% -40%, rgba(231,192,107,.10), transparent 65%),
+    linear-gradient(180deg, rgba(16,12,18,.92), rgba(11,11,15,.92));
+  backdrop-filter:blur(14px) saturate(175%);
+  -webkit-backdrop-filter:blur(14px) saturate(175%);
+}
+.header .line{border-top:1px solid rgba(255,255,255,.08)}
+
+/* header row 3 kolom */
+.header .row{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:12px;
+  padding:12px 0;
+}
+.brand{
+  text-align:center;
+  font-weight:900;
+  letter-spacing:.35em;
+  font-size:28px;
+  justify-self:center;
+  margin:0;
+}
+.brand-wrap{display:flex;align-items:center;justify-content:center}
+
+/* ✅ brand-link clean */
+.brand-link{
+  display:inline-block;
+  text-decoration:none;
+  color:inherit;
+  position:relative;
+  cursor:pointer;
+  padding:0;
+  border:none;
+  background:transparent;
+  box-shadow:none;
+  border-radius:0;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.brand-text{
+  position:relative;
+  display:inline-block;
+  letter-spacing:6px;
+  font-weight:900;
+  color:#fff4d6;
+  text-shadow:0 2px 18px rgba(231,192,107,.12), 0 1px 0 rgba(0,0,0,.35);
+}
+
+/* =====================================================
+   ICON BUTTON (SEARCH)
+   ===================================================== */
+.head-actions{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+}
+.iconbtn{
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  color:#fff4d6;
+  border-radius:14px;
+  cursor:pointer;
+  width:40px;
+  height:40px;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .14s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+}
+.iconbtn:hover{
+  background:rgba(255,221,138,.18);
+  color:#1b1208;
+  border-color:rgba(255,221,138,.30);
+  transform:translateY(-1px);
+  box-shadow:0 12px 22px rgba(0,0,0,.18)
+}
+.iconbtn:active{transform:translateY(0)}
+.iconbtn .icon{font-size:16px;line-height:1}
+
+/* =====================================================
+   (LEGACY) SEARCH BOX
+   ===================================================== */
+.search{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(255,255,255,.14);
+  padding:8px 10px;
+  background:#111;
+  color:#fff;
+  border-radius:12px;
+}
+.search input{
+  border:none;
+  outline:none;
+  background:transparent;
+  color:#fff;
+  width:100%;
+  min-width:140px;
+  font-size:16px;
+}
+.search button{
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff;
+  border-radius:10px;
+  padding:6px 10px;
+  cursor:pointer;
+}
+.search button:hover{background:rgba(255,255,255,.08)}
+
+/* =====================================================
+   SEARCH OVERLAY (lux + imlek)
+   ===================================================== */
+.search-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  pointer-events:none;
+  transition:.2s ease;
+  z-index:9997;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+.search-overlay.open{opacity:1;pointer-events:auto}
+.searchbar{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  background:
+    radial-gradient(900px 360px at 50% -40%, rgba(231,192,107,.12), transparent 65%),
+    linear-gradient(180deg, rgba(16,12,18,.92), rgba(11,11,15,.92));
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,.10);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:14px;
+  align-items:end;
+  padding:18px 18px;
+}
+.searchhint{
+  grid-column:1 / -1;
+  font-size:30px;
+  font-weight:800;
+  color:#fff4d6;
+  letter-spacing:.02em;
+  line-height:1.1;
+  text-shadow:0 10px 26px rgba(0,0,0,.35);
+}
+@media(max-width:720px){.searchhint{font-size:24px}}
+.searchrow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-bottom:2px solid rgba(255,221,138,.65);
+  padding:10px 0;
+  max-width:760px;
+}
+.sicon{font-size:18px;color:#ffdd8a}
+.searchrow input{
+  border:none;
+  outline:none;
+  font-size:16px;
+  width:100%;
+  background:transparent;
+  color:#fff;
+}
+.closebtn{
+  border:1px solid rgba(255,221,138,.28);
+  background:linear-gradient(180deg, rgba(255,221,138,.18), rgba(0,0,0,.18));
+  color:#fff4d6;
+  border-radius:999px;
+  padding:10px 14px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  height:44px;
+}
+.closebtn:hover{filter:brightness(1.05)}
+
+/* =====================================================
+   NAV (pills)
+   ===================================================== */
+.nav{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.nav ul{
+  list-style:none;
+  padding:10px 0;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.nav a{
+  display:inline-flex;
+  align-items:center;
+  height:36px;
+  padding:0 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  font-weight:900;
+  letter-spacing:.10em;
+  font-size:11px;
+  color:rgba(255,233,191,.92);
+  transition:transform .16s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+.nav a:hover{
+  transform:translateY(-1px);
+  border-color:rgba(255,221,138,.38);
+  background:linear-gradient(180deg, rgba(255,221,138,.14), rgba(255,255,255,.04));
+  box-shadow:0 12px 22px rgba(0,0,0,.18);
+}
+.nav a:active{transform:translateY(0)}
+.nav::-webkit-scrollbar{height:0}
+@media(max-width:720px){
+  .nav ul{
+    justify-content:flex-start;
+    flex-wrap:nowrap;
+    min-width:max-content;
+    gap:8px;
+    padding:10px 12px 12px;
+  }
+}
+
+/* =====================================================
+   HERO (Imlek-ready)
+   - default: kalau hero di HTML pakai background image, ini tetap cocok
+   ===================================================== */
+.hero{
+  text-align:center;
+  padding:44px 0 22px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(1100px 420px at 50% 0%, rgba(231,192,107,.16), transparent 60%),
+    radial-gradient(900px 520px at 20% 110%, rgba(194,20,42,.18), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.10), transparent 55%);
+}
+.hero h1{
+  font-size:28px;
+  margin:0;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#fff4d6;
+  text-shadow:0 12px 34px rgba(0,0,0,.45);
+}
+.hero p{
+  margin:10px 0 0;
+  color:rgba(255,233,191,.88);
+  font-weight:700;
+}
+@media(max-width:720px){
+  .hero{padding:32px 0 18px}
+  .hero h1{font-size:22px;letter-spacing:.18em}
+}
+
+/* ===== PRODUCT GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  padding:16px 0 32px;
+}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:820px){.grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+@media(max-width:420px){.grid{grid-template-columns:1fr;gap:12px}}
+
+/* =====================================================
+   MOBILE TUNING
+   ===================================================== */
+@media(max-width:520px){
+  :root{--strip-offset:46px}
+  .wrap{padding:0 12px}
+  .header .row{gap:10px}
+  .brand{font-size:22px;letter-spacing:.30em}
+  .brand-text{letter-spacing:5px}
+  .iconbtn{width:38px;height:38px;border-radius:14px}
+  .top-strip{font-size:10px}
+  .top-strip .strip-row{gap:8px}
+  .strip-left{display:none}
+  .strip-right{gap:6px}
+  .checkout-link .cicon{font-size:15px}
+  .checkout-link .ctext{font-size:11px}
+}
+@media(max-width:360px){
+  :root{--strip-offset:46px}
+  .brand{font-size:20px;letter-spacing:.26em}
+  .brand-text{letter-spacing:4px}
+  .iconbtn{width:36px;height:36px}
+  .checkout-link .cicon{font-size:14px}
+  .checkout-link .ctext{font-size:10px}
+}
+
+/* =====================================================
+   PRODUCT CARD (premium + imlek gold accents)
+   ===================================================== */
+.pcard{
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--lux-radius2);
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+  transform:translateZ(0);
+  transition:transform .18s ease, box-shadow .20s ease, border-color .20s ease, background .20s ease;
+}
+.pcard:hover{
+  transform:translateY(-3px);
+  box-shadow:0 24px 70px rgba(0,0,0,.30);
+  border-color:rgba(255,221,138,.30);
+  background:linear-gradient(180deg, rgba(255,221,138,.10), rgba(255,255,255,.03));
+}
+.imgbox{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.imgbox img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.01);
+  transition:transform .35s ease;
+}
+.pcard:hover .imgbox img{transform:scale(1.06)}
+.badges{
+  position:absolute;
+  top:12px;
+  left:12px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  z-index:2;
+}
+.badge{
+  font-size:10px;
+  padding:6px 10px;
+  border-radius:999px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-weight:900;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(11,11,15,.45);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  color:#fff4d6;
+}
+.badge.sold{
+  background:rgba(0,0,0,.72);
+  color:#fff;
+  border-color:rgba(0,0,0,.25);
+}
+.badge.light{
+  border-color:rgba(255,221,138,.42);
+  background:linear-gradient(180deg, rgba(255,221,138,.22), rgba(231,192,107,.10));
+  color:#1b1208;
+}
+.meta{
+  text-align:left;
+  padding:14px 14px 16px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.meta .name{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  line-height:1.35;
+  margin-bottom:8px;
+  color:#fff4d6;
+}
+.meta .price{
+  font-weight:900;
+  margin-top:0;
+  color:rgba(255,233,191,.85);
+  letter-spacing:.06em;
+}
+
+/* ===== BUTTONS (premium) ===== */
+.btn{
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  color:#fff4d6;
+  padding:12px 14px;
+  font-size:12px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border-radius:14px;
+  transition:transform .14s ease, box-shadow .18s ease, opacity .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 22px rgba(0,0,0,.22)}
+.btn:active{transform:translateY(0)}
+.btn.primary{
+  background:linear-gradient(180deg, rgba(255,221,138,1), rgba(231,192,107,1));
+  color:#1b1208;
+  border-color:rgba(255,221,138,.55);
+  box-shadow:0 12px 22px rgba(231,192,107,.12);
+}
+.btn.primary:hover{filter:saturate(1.05) brightness(1.02)}
+.btn.secondary{
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+}
+.btn.secondary:hover{
+  background:linear-gradient(180deg, rgba(143,16,32,.70), rgba(93,10,20,.70));
+  color:#ffe9bf;
+  border-color:rgba(255,221,138,.22);
+}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.card-actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:14px;
+}
+.btn.full{
+  width:100%;
+  padding:14px 0;
+  font-size:12px;
+  letter-spacing:.12em;
+  font-weight:900;
+}
+
+/* =====================================================
+   CART DRAWER (dark-lux)
+   ===================================================== */
+.cart-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s ease;
+  z-index:9998;
+}
+.cart-backdrop.open{opacity:1;pointer-events:auto}
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:-420px;
+  width:420px;
+  max-width:100%;
+  height:100vh;
+  background:
+    radial-gradient(900px 360px at 50% -40%, rgba(231,192,107,.10), transparent 65%),
+    linear-gradient(180deg, rgba(16,12,18,.96), rgba(11,11,15,.96));
+  border-left:1px solid rgba(255,255,255,.10);
+  box-shadow:-10px 0 50px rgba(0,0,0,.35);
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  transition:.3s ease;
+  color:#fff4d6;
+}
+.cart-drawer.open{right:0}
+.cart-head{
+  padding:16px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.cart-head h3{
+  margin:0;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.cart-close{
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.cart-close:hover{
+  background:linear-gradient(180deg, rgba(255,221,138,.20), rgba(0,0,0,.18));
+  color:#fff4d6;
+  border-color:rgba(255,221,138,.28);
+}
+.cart-body{flex:1;overflow:auto;padding:16px}
+.cart-empty{
+  border:1px dashed rgba(255,255,255,.20);
+  border-radius:16px;
+  padding:14px;
+  color:rgba(255,233,191,.75);
+  text-align:center;
+  background:rgba(255,255,255,.04);
+}
+.cart-item{
+  display:grid;
+  grid-template-columns:72px 1fr;
+  gap:12px;
+  align-items:flex-start;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.cart-item:last-child{border-bottom:none}
+.cart-item img{
+  width:72px;
+  height:72px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+}
+.cart-name{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  line-height:1.35;
+}
+.cart-subrow{
+  margin-top:6px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.cart-price{font-size:12px;font-weight:900;color:#fff4d6}
+.cart-qty{display:flex;align-items:center;gap:8px}
+.cart-qty button{
+  width:30px;height:30px;
+  border:1px solid rgba(255,221,138,.30);
+  background:rgba(255,255,255,.06);
+  color:#fff4d6;
+  border-radius:12px;
+  cursor:pointer;
+}
+.cart-qty b{min-width:18px;display:inline-block;text-align:center}
+.cart-actions{
+  margin-top:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.cart-remove{
+  font-size:11px;
+  color:rgba(255,233,191,.70);
+  cursor:pointer;
+  text-decoration:underline;
+}
+.cart-remove:hover{color:#fff}
+.cart-foot{
+  border-top:1px solid rgba(255,255,255,.10);
+  padding:16px;
+  background:rgba(255,255,255,.02);
+}
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  font-weight:900;
+  margin-bottom:12px;
+  letter-spacing:.06em;
+}
+.cart-foot .btn{width:100%}
+.cart-foot .btn.secondary{margin-top:10px}
+@media(max-width:520px){.cart-drawer{width:100%}}
+
+/* =====================================================
+   PRODUCT DETAIL PAGE (product.html) — keep layout
+   ===================================================== */
+.pdp{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}
+@media(max-width:900px){.pdp{grid-template-columns:1fr}}
+.pdp-left{position:relative}
+.pdp-badges{
+  position:absolute;top:14px;left:14px;z-index:2;
+  display:flex;flex-direction:column;gap:6px;
+}
+.pdp-image{
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:22px;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+}
+.pdp-image img{width:78%;max-width:520px}
+.pdp-thumbs{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.thumb{border:1px solid rgba(255,255,255,.14);padding:6px;border-radius:14px;cursor:pointer;background:rgba(255,255,255,.05)}
+.thumb.active{border-color:rgba(255,221,138,.45)}
+.thumb img{width:64px;height:64px;object-fit:cover;border-radius:10px}
+.pdp-title{font-size:38px;letter-spacing:.06em;margin:0;text-transform:uppercase;color:#fff4d6}
+.pdp-price{font-weight:900;margin-top:8px;color:rgba(255,233,191,.86)}
+.pdp-desc{margin-top:8px;color:rgba(255,255,255,.70);line-height:1.6}
+.pdp-rating{display:flex;gap:12px;align-items:center;margin-top:10px;color:rgba(255,233,191,.86)}
+.stars{letter-spacing:2px}
+.pdp-sizes{margin-top:18px}
+.pdp-sizes .label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:rgba(255,233,191,.86)}
+.sizes{display:flex;gap:10px;flex-wrap:wrap}
+.size{border:1px solid rgba(255,255,255,.18);padding:10px 14px;font-size:12px;cursor:pointer;border-radius:14px;color:#fff4d6;background:rgba(255,255,255,.04)}
+.size.active{background:linear-gradient(180deg, rgba(255,221,138,1), rgba(231,192,107,1));color:#1b1208;border-color:rgba(255,221,138,.55)}
+.pdp-cta{display:grid;grid-template-columns:120px 1fr;gap:12px;margin-top:16px}
+@media(max-width:420px){.pdp-cta{grid-template-columns:1fr}}
+.qty{display:flex;justify-content:space-between;border:1px solid rgba(255,255,255,.18);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.04)}
+.qty button{width:44px;background:transparent;border:none;font-size:18px;cursor:pointer;color:#fff4d6}
+.qty input{width:50px;border:none;text-align:center;font-weight:900;outline:none;font-size:16px;background:transparent;color:#fff4d6}
+.pdp-btn{height:54px;font-weight:900;border-radius:14px}
+.pdp-divider{margin:20px 0;border-top:1px solid rgba(255,255,255,.10)}
+.notes-title{font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;color:#fff4d6}
+.notes-box{border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:12px;background:rgba(255,255,255,.04)}
+.note-row{display:grid;grid-template-columns:140px 1fr;padding:10px 0;border-top:1px solid rgba(255,255,255,.08)}
+.note-row:first-child{border-top:none}
+.note-key{font-size:12px;font-weight:900;text-transform:uppercase;color:rgba(255,233,191,.86)}
+.notes-desc{margin-top:12px;line-height:1.7;color:rgba(255,255,255,.72)}
+
+/* =====================================================
+   CHECKOUT PAGE (checkout.html) — keep clean
+   ===================================================== */
+.checkout{max-width:920px;margin:0 auto;padding:18px}
+.checkout .row{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+@media(max-width:900px){.checkout .row{grid-template-columns:1fr}}
+.checkout .box{
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:22px;
+  padding:16px;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+}
+.checkout h2,.checkout h3{margin:0 0 10px;letter-spacing:.12em;text-transform:uppercase;color:#fff4d6}
+.checkout input,.checkout textarea,.checkout select{
+  width:100%;
+  padding:12px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;
+  margin-top:6px;
+  outline:none;
+  font-size:16px;
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+.checkout input::placeholder,.checkout textarea::placeholder{color:rgba(255,255,255,.55)}
+.checkout table{width:100%;border-collapse:collapse}
+.checkout td,.checkout th{padding:10px 6px;border-bottom:1px solid rgba(255,255,255,.10);text-align:left;font-size:12px;color:rgba(255,233,191,.86)}
+.checkout .right{text-align:right}
+.checkout-summary{margin-top:12px;border-top:1px solid rgba(255,255,255,.10);padding-top:12px}
+.checkout-summary .row2{display:flex;justify-content:space-between;font-weight:900;letter-spacing:.06em;color:#fff4d6}
+.checkout input[type="radio"],.checkout input[type="checkbox"]{width:auto;padding:0;border:none;border-radius:0;margin-top:0}
+.radioRow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media(max-width:520px){.radioRow{grid-template-columns:1fr}}
+.pill{
+  border:1.5px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.04);
+  border-radius:999px;
+  padding:12px 14px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  user-select:none;
+  white-space:nowrap;
+  transition:transform .14s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  color:#fff4d6;
+}
+.pill:hover{transform:translateY(-1px);box-shadow:0 12px 22px rgba(0,0,0,.22)}
+.pill input[type="radio"]{
+  appearance:auto;
+  -webkit-appearance:radio;
+  width:18px;
+  height:18px;
+  margin:0;
+  accent-color:#ffdd8a;
+}
+.pill:has(input[type="radio"]:checked){
+  border-color:rgba(255,221,138,.45);
+  background:linear-gradient(180deg, rgba(255,221,138,1), rgba(231,192,107,1));
+  color:#1b1208;
+}
+.pill:has(input[type="radio"]:checked) b{color:#1b1208}
+
+/* =====================================================
+   MENU CEPAT (class-based)
+   ===================================================== */
+.mcFab{
+  position:fixed;
+  left:14px;
+  bottom:16px;
+  z-index:9999;
+  padding:11px 18px;
+  border:1px solid rgba(255,221,138,.30);
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(143,16,32,.78), rgba(93,10,20,.78));
+  color:#ffe9bf;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  box-shadow:0 14px 30px rgba(0,0,0,.32), 0 0 0 1px rgba(255,221,138,.12) inset;
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .22s ease;
+}
+.mcFab:hover{transform:translateY(-2px)}
+.mcFab:active{transform:translateY(0)}
+.mcSheet{
+  position:fixed;
+  left:14px;
+  bottom:78px;
+  width:320px;
+  max-width:92vw;
+  z-index:9998;
+  border-radius:22px;
+  border:1px solid rgba(255,221,138,.18);
+  background:
+    radial-gradient(900px 360px at 50% -40%, rgba(231,192,107,.10), transparent 65%),
+    linear-gradient(180deg, rgba(16,12,18,.92), rgba(11,11,15,.92));
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  box-shadow:0 18px 46px rgba(0,0,0,.50), 0 0 0 1px rgba(255,255,255,.06) inset;
+  transform:translateY(10px) scale(.985);
+  opacity:0;
+  pointer-events:none;
+  transition:transform .22s ease, opacity .22s ease;
+  color:#ffe9bf;
+}
+.mcSheet.open{transform:none;opacity:1;pointer-events:auto}
+.mcHead{
+  padding:14px 16px 4px;
+  font-weight:900;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.mcSub{
+  padding:0 16px 10px;
+  color:rgba(255,233,191,.72);
+  font-size:12px;
+}
+.mcBody{padding:6px 12px 14px}
+.mcItem{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin:10px 0;
+  padding:12px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  text-decoration:none;
+  color:inherit;
+  position:relative;
+  overflow:hidden;
+  transition:transform .18s ease, border-color .18s ease, box-shadow .22s ease;
+}
+.mcItem:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,221,138,.22);
+  box-shadow:0 14px 26px rgba(0,0,0,.38);
+}
+.mcIcon{
+  width:44px;height:44px;border-radius:14px;
+  background:rgba(255,255,255,.06);
+  display:grid;place-items:center;overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(255,221,138,.10);
+}
+.mcIcon img{width:100%;height:100%;object-fit:contain;display:block}
+.mcTitle{font-weight:900;letter-spacing:.06em}
+.mcDesc{font-size:12px;color:rgba(255,233,191,.70);margin-top:3px}
+.mcClose{
+  display:block;
+  width:calc(100% - 6px);
+  margin:10px auto 0;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,221,138,.30);
+  background:linear-gradient(180deg, rgba(255,221,138,.18), rgba(231,192,107,.10));
+  color:#fff4d6;
+  font-weight:900;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+/* =====================================================
+   ADMIN (admin.html) — keep as is (light background)
+   ===================================================== */
+body.admin{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:url("https://plus.unsplash.com/premium_photo-1661963188432-5de8a11f21a7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center/cover no-repeat fixed;
+  color:#111;
+}
+body.admin,body.admin h1,body.admin h2,body.admin h3,body.admin p,body.admin label,body.admin small,body.admin a,body.admin .brandA,body.admin .topbarA,body.admin .topbarA *{color:#111 !important}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+body.admin .glass{
+  background:rgba(255,255,255,.78) !important;
+  border:1px solid rgba(0,0,0,.12) !important;
+  border-radius:var(--radius);
+  box-shadow:0 18px 60px rgba(0,0,0,.25) !important;
+}
+.topbarA{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.brandA{font-weight:800;letter-spacing:.14em}
+.cardA{padding:18px}
+label.A{font-size:12px;color:#111 !important}
+input.A,textarea.A,select.A{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.20) !important;
+  background:rgba(255,255,255,.85) !important;
+  color:#111 !important;
+  outline:none;
+  font-size:16px;
+}
+input.A::placeholder,textarea.A::placeholder{color:rgba(17,17,17,.55) !important}
+.btnA{
+  padding:12px 16px;
+  border-radius:14px;
+  font-weight:800;
+  cursor:pointer;
+  border:none;
+}
+.btnA.primary{background:linear-gradient(135deg,#e7c06b,#c79b3f);color:#151515}
+.btnA.ghost{
+  background:rgba(255,255,255,.55) !important;
+  border:1px solid rgba(0,0,0,.25) !important;
+  color:#111 !important;
+}
+.btnA.danger{
+  background:rgba(255,70,70,.2);
+  color:#7a0000 !important;
+  border:1px solid rgba(255,70,70,.35);
+}
+.tableA{width:100%;border-collapse:separate;border-spacing:0 10px}
+.trA{background:rgba(255,255,255,.72) !important;border-radius:16px}
+.tableA th{font-size:12px;color:rgba(17,17,17,.7) !important;text-align:left;padding:6px 10px}
+.tableA td{padding:12px 10px;color:#111 !important}
+.badgeA{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  border:1px solid rgba(0,0,0,.18) !important;
+  color:#111 !important;
+}
+.badgeA.gold{color:#7a2946 !important;border-color:#7a2946 !important}
+.toastA{
+  position:fixed;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.85) !important;
+  border:1px solid rgba(0,0,0,.18) !important;
+  color:#111 !important;
+  display:none;
+  z-index:999;
+}
+
+/* =====================================================
+   BACKWARD COMPAT
+   ===================================================== */
+.topbar{display:none !important}
+
+/* =====================================================
+   A11Y FOCUS
+   ===================================================== */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+  outline:3px solid rgba(255,221,138,.55);
+  outline-offset:2px;
+  border-radius:14px;
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+  .pcard,.btn,.imgbox img,.nav a,.iconbtn{transition:none!important}
+}
